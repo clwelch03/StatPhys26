@@ -5,7 +5,7 @@ format: jb-book
 root: intro-files/intro
 chapters:
 - file: intro-files/course-Info-211-2026
-- file: intro-flies/introduction
+- file: intro-files/introduction
 - file: Probability-Entropy/Coin-flipping
 - file: Probability-Entropy/Shannon-entropy-2
 # - file: Ensemble-Theory-1
