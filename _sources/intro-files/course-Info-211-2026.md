@@ -52,7 +52,7 @@ Grades will be determined from a weighting of all the elements of the course as 
 - Midterm, 20 %
 - Final, 40 %
 - Homework, 40 %
-- *extra credit:* participation, 5 %
+- *extra credit:* participation, 10 %
 
 **Homework:** Assignments will be posted weekly on Fridays by 5PM and are due the following Friday by 11:59PM via Gradescope.
 
