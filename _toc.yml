@@ -1,0 +1,39 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro-files/intro
+chapters:
+- file: intro-files/course-Info-211-2026
+- file: intro-flies/introduction
+- file: Probability-Entropy/Coin-flipping
+- file: Probability-Entropy/Shannon-entropy-2
+# - file: Ensemble-Theory-1
+# - file: Meaning-of-Equilibrium
+# - file: Equipartition-Mesostates
+# - file: L5-ensemble-theory-II
+# - file: Gibbs_Distribution
+# - file: thermalization-simulation
+# - file: paramagnet-FLC.ipynb
+# - file: Spontaneous-Reactions 
+# - file: Crooks
+# - file: Chemical-reactions
+# - file: Ising-lectures/Ising-all-to-all
+# - file: Ising-lectures/Ising-1D.ipynb
+# - file: Variational-Methods/Variational-methods-Mean-Field
+# - file: Variational-Methods/interacting-gases-f
+# - file: MonteCarlo/MonteCarlo
+# - file: Poisson-Boltzmann/Poisson-Boltzmann
+# - file: Diffusion/Diffusion.md
+# - file: Ergodicity/ergodicity.md
+# - file: QM-SM-Intro/QM-SM-intro
+# - file: QM-SM-Intro/QM-SM-intro-2
+# - file: QM-SM-Intro/QM-SM-Formalism
+# - file: Boson-Fermions/QM-SM-Boson-Fermion-Hilbertspace
+# - file: Boson-Fermions/QM-SM-Dilute-ideal-qm-gases
+# - file: Boson-Fermions/QM-SM-DegenerateFermi
+# - file: Boson-Fermions/QM-SM-BEC
+# - file: Landau/Landau
+
+
+#- file: Landau/Ginzburg-Landau
