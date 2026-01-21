@@ -497,13 +497,13 @@ P\left(\sigma_{1}, \sigma_{2}, \ldots\right) &amp; = \prod_{j} P\left(\sigma_{j}
 <p>For instance, when observing a sequence of coin flips represented as 1’s and 0’s, we are generally uninterested in the precise order of outcomes. Instead, we notice patterns, such as the balance between 1’s and 0’s. This leads us to consider quantities like the total number of heads <span class="math notranslate nohighlight">\(N_+\)</span>, tails <span class="math notranslate nohighlight">\(N_-\)</span>, or their difference,</p>
 <div class="math notranslate nohighlight">
 \[X \equiv \sum_{j=1}^{N} \sigma_{j}=N_+ - N_-\;.\]</div>
-<p>Similarly, in a magnet, individual spins are difficult to measure, but we can focus on macroscopic quantities like the magnetization, which is also expressed as <span class="math notranslate nohighlight">\(X = N_+ - N_-\)</span>, the net difference between up and down spins.</p>
+<p>Similarly, in a magnet, individual spins are difficult to measure, but we can focus on macroscopic quantities like the magnetization, which is also expressed as <span class="math notranslate nohighlight">\(X = N_+ - N_-\)</span>, the net difference between up and down spins. Note that since, <span class="math notranslate nohighlight">\(N=N_++N_-\)</span>, fixing <span class="math notranslate nohighlight">\(X\)</span> fixes both <span class="math notranslate nohighlight">\(N_+=(N+X)/2\)</span> and <span class="math notranslate nohighlight">\(N_-=(N-X)/2\)</span>.</p>
 <p>Since mapping <span class="math notranslate nohighlight">\({\sigma} \rightarrow X\)</span> reduces detailed information to a single summary quantity, <span class="math notranslate nohighlight">\(X\)</span> is known as a macroscopic observable. Fixing <span class="math notranslate nohighlight">\(X\)</span> defines a macrostate, which captures the system’s behavior at a higher level of abstraction. (The associated loss of information is a key quantity central to both information theory and statistical mechanics. More on that later.)</p>
 <p><strong>A primary goal in statistical physics is to transition from the probability distribution of microstates, <span class="math notranslate nohighlight">\(P({\sigma})\)</span>, to the probability distribution of macrostates, <span class="math notranslate nohighlight">\(P(X)\)</span>.</strong> Understanding this transformation is central to the discipline. To explore this, consider a coin-flipping example.</p>
 <p>The probability of observing a macrostate <span class="math notranslate nohighlight">\(X\)</span> depends on two factors: the number of microstates <span class="math notranslate nohighlight">\(\binom{N}{N_+}\)</span> consistent with <span class="math notranslate nohighlight">\(X\)</span>, and the probability <span class="math notranslate nohighlight">\(p^{N_+}q^{N_-}\)</span> of any specific microstate. This yields the binomial distribution:</p>
 <div class="math notranslate nohighlight">
 \[
-P(X)=P(N_+,N_+)=\underbrace{\frac{N!}{N_{+}! N_{-}!}}_{\equiv e^{S(X)}} \quad \underbrace{p^{N_{+}}q^{N_{-}}}_{\equiv e^{-E(X)}}
+P(X)=\underbrace{\frac{N!}{N_{+}! N_{-}!}}_{\equiv e^{S(X)}} \quad \underbrace{p^{N_{+}}q^{N_{-}}}_{\equiv e^{-E(X)}}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
@@ -616,9 +616,9 @@ E(x) &amp; =-\ln \left(p^{N_{+}} q^{N_{-}}\right)=-N_{+} \ln (p)-N_{-} \ln (q) \
 <p>We can explore the effects of finite <span class="math notranslate nohighlight">\(N\)</span> by Taylor expanding <span class="math notranslate nohighlight">\(S(x)-E(x)\)</span> to <span class="math notranslate nohighlight">\(O(\Delta x^2)\equiv O\left[(x-\langle x\rangle)^{2}\right]\)</span>, we obtain to leading order a Gaussian,</p>
 <div class="math notranslate nohighlight">
 \[
-P(x) \approx C e^{-\left[\frac{(\Delta x)^{2}}{2 \langle \Delta x^2 \rangle}+O\left(\frac{1}{N}\right)\right]} \;,
+P(x) \approx C e^{-\left[\frac{(\Delta x)^{2}}{2 \langle \Delta x^2 \rangle}+O\left(N \Delta x^3 \right)\right]} \;,
 \]</div>
-<p>whose spread is controlled by the variance <span class="math notranslate nohighlight">\(\langle \Delta x^2\rangle = 4pq N^{-1/2}\)</span>.</p>
+<p>whose spread is controlled by the variance <span class="math notranslate nohighlight">\(\langle \Delta x^2\rangle = 4pq N^{-1}\)</span>. The first non-Gaussian correction in the exponent, <span class="math notranslate nohighlight">\(N\Delta x^3\)</span>, becomes <span class="math notranslate nohighlight">\(O(1)\)</span> only for fluctuations of size <span class="math notranslate nohighlight">\(\Delta x=O(N^{-1/3})\)</span>. For such fluctuations, the leading Gaussian contribution scales as <span class="math notranslate nohighlight">\(-N\Delta x^2= -O(N^{1/3})\)</span>, which is large and negative when <span class="math notranslate nohighlight">\(N\)</span> is large. Hence, for large <span class="math notranslate nohighlight">\(N\)</span>, appreciable non-Gaussian fluctuations are exceedingly rare.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>One can show that, quite generally, large sums of random variables tend to Gaussians if correlations are short ranged. This is a consequence of the Central Limit Theorem (CLT). The Gaussian is completely fixed by knowing the first and second moment of the distribution. Since the first two moments can often be determined quite easily (see below), this is a great advantage for calculations. The scaling <span class="math notranslate nohighlight">\(\langle \Delta x^2\rangle\sim N^{-1/2}\)</span> and the fact that the limiting distribution is independent of the higher order details of the distributions of individual random numbers is a first example of <strong>universality</strong>. See Section 1.5 of Arovas for a clear mathematical demonstration of the CLT.</p>
@@ -666,8 +666,11 @@ v. <span class="math notranslate nohighlight">\(\langle X\rangle^{2}=N^{2}(p-q)^
 \operatorname{var}(X) &amp; =4 Npq .
 \end{aligned}
 \end{split}\]</div>
-<p>Note: Since <span class="math notranslate nohighlight">\(\Delta X \propto \sqrt{N}\)</span> but <span class="math notranslate nohighlight">\(\langle X\rangle\propto N\)</span>, we have <span class="math notranslate nohighlight">\(\frac{\Delta x}{\langle x\rangle} \sim N^{-1/2}\rightarrow 0\)</span> for <span class="math notranslate nohighlight">\(p \neq q\)</span> as <span class="math notranslate nohighlight">\(N\to \infty\)</span>.</p>
-<p>The <span class="math notranslate nohighlight">\(\sqrt{N}\)</span> scaling is a general consequence of the CLT.</p>
+<p>Note:</p>
+<ul class="simple">
+<li><p>Since <span class="math notranslate nohighlight">\(\Delta X \propto \sqrt{N}\)</span> but <span class="math notranslate nohighlight">\(\langle X\rangle\propto N\)</span>, we have <span class="math notranslate nohighlight">\(\frac{\Delta x}{\langle x\rangle} \sim N^{-1/2}\rightarrow 0\)</span> for <span class="math notranslate nohighlight">\(p \neq q\)</span> as <span class="math notranslate nohighlight">\(N\to \infty\)</span>.</p></li>
+<li><p>The variance of the specific magnetization <span class="math notranslate nohighlight">\(x=X/N\)</span> follows as <span class="math notranslate nohighlight">\(\langle \Delta x^2 \rangle=4pq N^{-1}\)</span>, and appeared in the Gaussian pdf above. The typical spread ~<span class="math notranslate nohighlight">\(N^{-1/2}\)</span> of intensive quantities is general consequence of the Central Limit Theorem.</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -708,8 +711,8 @@ v. <span class="math notranslate nohighlight">\(\langle X\rangle^{2}=N^{2}(p-q)^
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5fab73295e825e3354d9dc51ae2b23e40b2330e900ec75d50d9fb87433da1482.png" src="../_images/5fab73295e825e3354d9dc51ae2b23e40b2330e900ec75d50d9fb87433da1482.png" />
-<img alt="../_images/db91ce12dc8920badd7ba438aba13648e42b61a32018ef16585e99c9a8285e12.png" src="../_images/db91ce12dc8920badd7ba438aba13648e42b61a32018ef16585e99c9a8285e12.png" />
+<img alt="../_images/e7f950ecb425a94616c864bff0fd01e93abe9bc2fa20e511ad3a8195a01f4884.png" src="../_images/e7f950ecb425a94616c864bff0fd01e93abe9bc2fa20e511ad3a8195a01f4884.png" />
+<img alt="../_images/e6fb371931e228eeace8f012cb122f7903a91181ad99803eee53c1fdab3081a6.png" src="../_images/e6fb371931e228eeace8f012cb122f7903a91181ad99803eee53c1fdab3081a6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -740,7 +743,7 @@ v. <span class="math notranslate nohighlight">\(\langle X\rangle^{2}=N^{2}(p-q)^
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5ede6c7465d4956e02c66a58e9fe9d95259f9c96f58f8a797994d034879d5355.png" src="../_images/5ede6c7465d4956e02c66a58e9fe9d95259f9c96f58f8a797994d034879d5355.png" />
+<img alt="../_images/fd14fcf81a4117ea67ae5ef29f82b368a04522a70297cfe5d366e1bbc5c59389.png" src="../_images/fd14fcf81a4117ea67ae5ef29f82b368a04522a70297cfe5d366e1bbc5c59389.png" />
 </div>
 </div>
 </section>
